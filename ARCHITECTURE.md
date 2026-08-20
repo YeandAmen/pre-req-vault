@@ -2,13 +2,13 @@
 
 ```mermaid
 flowchart LR
-    user[User / TypeScript client\nWallet signer]
-    state[(Vault State PDA\nseeds: ["state", user])]
-    vault[(Vault PDA\nseeds: ["vault", vault_state])]
-    registration[(Registration PDA\nseeds: ["prereqs", user])]
-    vaultProgram[[Modified Vault program\nG2EbNUR3qxtVyfMGaxf6BzMBpd7xfB3gESNxhJVreSxj]]
-    registrationProgram[[Registration program\nTRBZyQHB3m68FGeVsqTK39Wm4xejadjVhP5MAZaKWDM]]
-    system[[Solana System Program]]
+    user["User / TypeScript client<br/>Wallet signer"]
+    state[("Vault State PDA<br/>seeds: [state, user]")]
+    vault[("Vault PDA<br/>seeds: [vault, vault_state]")]
+    registration[("Registration PDA<br/>seeds: [prereqs, user]")]
+    vaultProgram[["Modified Vault program<br/>G2EbNUR3qxtVyfMGaxf6BzMBpd7xfB3gESNxhJVreSxj"]]
+    registrationProgram[["Registration program<br/>TRBZyQHB3m68FGeVsqTK39Wm4xejadjVhP5MAZaKWDM"]]
+    system[["Solana System Program"]]
 
     user -->|initialize| vaultProgram
     vaultProgram -->|creates / records bumps| state
@@ -18,7 +18,7 @@ flowchart LR
     system --> vault
 
     user -->|withdraw(amount, github)| vaultProgram
-    vaultProgram -->|System CPI: vault -> user\nVault PDA signer seeds| system
+    vaultProgram -->|"System CPI: vault -> user<br/>Vault PDA signer seeds"| system
     system --> user
     vaultProgram -->|registration CPI: initialize(github)| registrationProgram
     registrationProgram -->|creates / stores GitHub username| registration
