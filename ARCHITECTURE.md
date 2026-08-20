@@ -10,24 +10,24 @@ flowchart LR
     registrationProgram[["Registration program<br/>TRBZyQHB3m68FGeVsqTK39Wm4xejadjVhP5MAZaKWDM"]]
     system[["Solana System Program"]]
 
-    user -->|initialize| vaultProgram
-    vaultProgram -->|creates / records bumps| state
-    vaultProgram -->|derives| vault
-    user -->|deposit(amount)| vaultProgram
-    vaultProgram -->|System CPI: user -> vault| system
+    user -->|"initialize"| vaultProgram
+    vaultProgram -->|"creates / records bumps"| state
+    vaultProgram -->|"derives"| vault
+    user -->|"deposit(amount)"| vaultProgram
+    vaultProgram -->|"System CPI: user -> vault"| system
     system --> vault
 
-    user -->|withdraw(amount, github)| vaultProgram
+    user -->|"withdraw(amount, github)"| vaultProgram
     vaultProgram -->|"System CPI: vault -> user<br/>Vault PDA signer seeds"| system
     system --> user
-    vaultProgram -->|registration CPI: initialize(github)| registrationProgram
-    registrationProgram -->|creates / stores GitHub username| registration
-    registrationProgram -->|payer and signer| user
-    registrationProgram -->|account creation| system
+    vaultProgram -->|"registration CPI: initialize(github)"| registrationProgram
+    registrationProgram -->|"creates / stores GitHub username"| registration
+    registrationProgram -->|"payer and signer"| user
+    registrationProgram -->|"account creation"| system
 
-    user -->|close| vaultProgram
-    vaultProgram -->|System CPI: vault -> user| system
-    vaultProgram -->|close = user| state
+    user -->|"close"| vaultProgram
+    vaultProgram -->|"System CPI: vault -> user"| system
+    vaultProgram -->|"close = user"| state
 ```
 
 ## Verified PDA Relationships
